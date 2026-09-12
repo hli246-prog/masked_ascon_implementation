@@ -1,3 +1,11 @@
+// Ascon Permutation Core
+// Reference: [6] Ascon v1.2 Specification, Section 2.3-2.5
+// - S-box: 5-bit substitution per Table 1 of the spec
+// - Linear layer: bitwise rotation XOR structure per Section 2.4
+// - Round constants: hardcoded per Table 3 (12 rounds for Ascon-128)
+// All logic below is a direct transcription of the mathematical
+// definition; no optimization or alternative formulation is applied.
+
 `timescale 1ns / 1ps
 
 `define ROTR64(val, n) ({val[(n)-1:0], val[63:(n)]})
