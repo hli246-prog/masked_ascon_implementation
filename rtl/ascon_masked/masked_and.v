@@ -1,3 +1,7 @@
+// Masked AND Gate 
+// Reference: [11] Ishai-Sahai-Wagner, CRYPTO 2003, Section 3
+//            [2]  Groß et al., DOM, Section 4.2 (hardware adaptation)
+
 `timescale 1ns / 1ps
 
 module masked_and (
