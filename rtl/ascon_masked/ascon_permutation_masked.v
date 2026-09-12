@@ -1,3 +1,8 @@
+// Masked S-box Construction
+// Reference: [2] Groß et al., DOM, Algorithm 1 & Section 4
+//            [6] Ascon v1.2 Specification (base S-box definition)
+
+
 `timescale 1ns / 1ps
 
 `define ROTR64(val, n) ({val[(n)-1:0], val[63:(n)]})
