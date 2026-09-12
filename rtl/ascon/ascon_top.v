@@ -1,3 +1,21 @@
+// Ascon Lightweight Cryptography - Unmasked Hardware Implementation
+// Course: ELE414 Final Report
+//
+// ARCHITECTURE REFERENCES:
+//   [8] K. Gaj et al., "Hardware API for Lightweight Cryptography,"
+//       GMU CERG, 2020. https://github.com/GMUCERG/LWC
+//       -> Top-level FSM phase partitioning and handshake protocol
+//          are derived from the LWC Hardware API specification.
+//
+//   [6] C. Dobraunig et al., "Ascon v1.2: Lightweight Cryptography
+//       for the Internet of Things," NIST LWC Finalist, 2021.
+//       https://ascon.iaik.tugraz.at/
+//       -> All mathematical operations (S-box, linear layer, round
+//          constants) strictly follow the official Ascon v1.2 spec.
+//
+// NOTE: This is an independent educational implementation.
+//       No source code was copied from either reference repository.
+
 `timescale 1ns / 1ps
 
 module ascon_top (
@@ -103,6 +121,11 @@ module ascon_top (
     end
     
     wire [63:0] pad_out = (pad_din & valid_mask) | pad_bit;
+    
+// FSM Phase Partitioning & Handshake Protocol
+// Reference: [8] GMU LWC Hardware API, Section 3-4
+// The state encoding, idle/compute/done handshaking, and tag-length
+// signaling convention follow the LWC compliant interface design.
 
     always @(*) begin
         next_state = state; 
