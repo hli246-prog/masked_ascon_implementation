@@ -1,3 +1,28 @@
+// Masked Ascon 
+// Course: ELE414 Final Report
+//
+// MASKING SCHEME REFERENCES:
+//   [2] H. Groß, S. Mangard, and T. Korak, "Domain-Oriented Masking:
+//       Compact Masked Hardware Implementations with Arbitrary Protection
+//       Order," IACR ePrint 2016/486, 2016. https://eprint.iacr.org/2016/486
+//       -> Core masking framework: domain separation, register placement,
+//          and glitch-resistant composition rules for hardware.
+//
+//   [11] Y. Ishai, A. Sahai, and D. Wagner, "Private Circuits: Securing
+//        Hardware against Probing Attacks," CRYPTO 2003, vol. 2729,
+//        pp. 463–481.
+//        -> Theoretical foundation: ISW masked AND gadget used as the
+//           nonlinear layer primitive in this implementation.
+//
+//   [12] "simpleserial-ascon: Masked Ascon Software Implementations,"
+//        GitHub. https://github.com/ascon/simpleserial-ascon
+//        -> Share splitting strategy and linear-layer isolation approach
+//           were informed by this reference software implementation.
+//
+// NOTE: This is an independent educational hardware implementation.
+//       No HDL code was copied from any reference repository.
+//       The design follows the above publications' methodologies.
+
 `timescale 1ns / 1ps
 
 module ascon_top_masked (
